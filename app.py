@@ -10,8 +10,8 @@ model = pickle.load(open('randomForestRegressor.pkl','rb'))
 @app.route('/')
 def home():
     #return 'Hello World'
-    return render_template('home.html')
-    #return render_template('index.html')
+#     return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/predict',methods = ['POST'])
 def predict():
@@ -20,7 +20,7 @@ def predict():
     prediction = model.predict(final_features)
     print(prediction[0])
 
-    #output = round(prediction[0], 2)
+    output = round(prediction[0], 2)
     return render_template('home.html', prediction_text="AQI for Jaipur {}".format(prediction[0]))
 
 @app.route('/predict_api',methods=['POST'])
